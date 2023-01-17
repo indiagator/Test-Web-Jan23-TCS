@@ -34,4 +34,11 @@ public class MainRestController
         return msg;
     }
 
+    @GetMapping("savepub")
+    public void testSavePublisher()
+    {
+        PublisherHbmDao publisherHbmDao = new PublisherHbmDao();
+        publisherHbmDao.savePublisher();
+    }
+
 }

@@ -6,27 +6,11 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
 
-@SpringBootTest
-class TestwebApplicationTests {
+public class PublisherHbmDao
+{
 
-
-
-    @Test
-    void contextLoads() {
-    }
-
-    @BeforeTestClass
-    public void setup()
-    {
-
-    }
-
-    @Test
-    public void testSavePublisher()
+    public void savePublisher()
     {
 
         SessionFactory factory;
