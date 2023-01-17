@@ -7,12 +7,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class FirstBusinessService
 {
-    @Autowired
-    BookRepository bookRepository;
+   // @Autowired
+   // BookRepository bookRepository;
+
+    //@Autowired
+   // public void setBookRepository(BookRepository bookRepository) {
+    //    this.bookRepository = bookRepository;
+   // }
 
     void save(Book book)
     {
-        bookRepository.save(book);
+      //  bookRepository.save(book);
     }
 
 }

@@ -1,9 +1,9 @@
 package com.example.testweb;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "publisher")
@@ -14,6 +14,17 @@ public class Publisher {
 
     @Column(name = "name", length = 50)
     private String name;
+
+    @OneToMany(mappedBy = "publisher")
+    private Set<Book> books = new LinkedHashSet<>();
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 
     public String getId() {
         return id;

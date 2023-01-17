@@ -9,13 +9,16 @@ public class MainRestController
 {
 
     @Autowired
-    BookRepository bookRepository;
+    PublisherHbmDao publisherHbmDao;
 
-    @GetMapping("book/{id}")
-    Book getBook(@PathVariable("id") String id)
-    {
-       return bookRepository.findById(Integer.valueOf(id)).get(); // Converted to JSON
-    }
+    //@Autowired
+    //BookRepository bookRepository;
+
+   // @GetMapping("book/{id}")
+   // Book getBook(@PathVariable("id") String id)
+    //{
+       //return bookRepository.findById(Integer.valueOf(id)).get(); // Converted to JSON
+   // }
 
     @PostMapping("sendbody")
     Book getBody(@RequestBody User user )
@@ -28,7 +31,7 @@ public class MainRestController
     @PostMapping("savebook")
     StatusMessage saveBook(@RequestBody Book book)
     {
-        bookRepository.save(book);
+       // bookRepository.save(book);
         StatusMessage msg = new StatusMessage();
         msg.setMessage("New Book Saved");
         return msg;
@@ -37,8 +40,25 @@ public class MainRestController
     @GetMapping("savepub")
     public void testSavePublisher()
     {
-        PublisherHbmDao publisherHbmDao = new PublisherHbmDao();
-        publisherHbmDao.savePublisher();
+        publisherHbmDao.savePublisherTest();
+    }
+
+    @GetMapping("getpub")
+    Publisher getPublisher(@RequestParam("name") String name)
+    {
+        return publisherHbmDao.getPublisherTest(name);
+    }
+
+    @GetMapping("updtpub")
+    Publisher updatePublisher(@RequestParam("name") String name, @RequestParam("newName") String newName)
+    {
+        return publisherHbmDao.updatePublisherTest(name,newName);
+    }
+
+    @GetMapping("delpub")
+    void  deletePublisher(@RequestParam("name") String name)
+    {
+        publisherHbmDao.deletePublisher(name);
     }
 
 }
